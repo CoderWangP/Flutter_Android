@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugins.GeneratedPluginRegistrant
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         private const val CHANNEL = "com.example.flutterandroiddemo/channel"
     }
 
-    private var mFlutterEngine :FlutterEngine? = null
+//    private var mFlutterEngine :FlutterEngine? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,15 +22,15 @@ class MainActivity : AppCompatActivity() {
     fun forward2Flutter(view: View) {
         /*startActivity(FlutterActivity
             .createDefaultIntent(this))*/
-
-        startActivity(FlutterActivity
+        startActivity(
+            FlutterActivity
             .withNewEngine()
             .initialRoute("/page_2")
             .build(this))
     }
 
 
-    private fun registerFlutterChannel() {
+   /* private fun registerFlutterChannel() {
         mFlutterEngine = FlutterEngine(this)
         GeneratedPluginRegistrant.registerWith(mFlutterEngine!!)
         MethodChannel(mFlutterEngine?.dartExecutor, CHANNEL)
@@ -43,5 +40,5 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this@MainActivity,NativeActivity::class.java))
                 }
             }
-    }
+    }*/
 }
